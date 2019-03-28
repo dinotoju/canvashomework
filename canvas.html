@@ -5,15 +5,12 @@
 <title>Julia's Canvas</title>
 	<style type="text/css">
 	canvas{
-		border: 1px dashed #999;
-		width: 80%;
-		height: 80%;}
+		border: 1px dashed #999;}
 	</style>
 </head>
 
 <body>
-<h1>Julia's Canvas</h1>
-<canvas id="canvas" width="500" height="500">
+<canvas id="canvas">
 An alternative text describing what your canvas displays. 
 </canvas>
 
@@ -34,15 +31,16 @@ An alternative text describing what your canvas displays.
 	ctx.fill();
 	}
 
+	window.addEventListener('touchmove', function (e) {
+	x = e.touches[0].screenX;
+	y = e.touches[0].screenY;
+	draw();
+	})
+
 	window.addEventListener('mousemove', function (e) {
 	x = (e.pageX);
 	y = (e.pageY);
 	draw();
-	})
-	
-	  window.addEventListener('touchmove', function (e) {
-	  x = e.touches[0].screenX;
-	  y = e.touches[0].screenY;
 	})
 	
 	window.addEventListener("keypress", function (e) {
