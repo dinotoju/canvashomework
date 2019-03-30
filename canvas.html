@@ -15,7 +15,7 @@
 <body>
 <div>
 <canvas id="canvas" width="100%" height="100%">
-An alternative text describing what your canvas displays. 
+This canvas is for drawing circles that follow your mouse pointer or finger. The circle's color and size can be adjusted with the keyboard or color picker.
 </canvas>
 </div>
 <script>
@@ -31,8 +31,8 @@ An alternative text describing what your canvas displays.
 	
 	function fitToContainer(canvas){
 	  // Make it visually fill the positioned parent
-	  canvas.style.width ='100%';
-	  canvas.style.height='100%';
+	  canvas.style.width = '100%';
+	  canvas.style.height= '100%';
 	  // ...then set the internal size to match
 	  canvas.width  = canvas.offsetWidth;
 	  canvas.height = canvas.offsetHeight;
@@ -80,8 +80,6 @@ An alternative text describing what your canvas displays.
 	}
 	else if (e.keyCode == "32"){
 		ctx.clearRect(0,0,canvas.width, canvas.height);
-		radius = 10;
-		color = "red";
 	} 
 
 	})
@@ -109,8 +107,23 @@ An alternative text describing what your canvas displays.
 	color = "red";
 }, false);
 
-</script>
+// Function adapted from https://www.javaworld.com/article/2073846/html5-color-picker.html	
+function newCircleColor(picker){
+     color = picker;
+     document.colorForm.selected.value = picker;
+  }
 	
+</script>
+
+<form name="colorForm">
+   <p>Change the circle color:
+   <input name="colorpicker" type="color" onchange="newCircleColor(colorpicker.value);">
+   </p>
+   <p>
+   Selected Color
+   <input name="selected" type="text">
+   </p>
+</form>
 
 </body>
 </html>
